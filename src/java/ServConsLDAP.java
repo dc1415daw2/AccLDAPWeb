@@ -51,7 +51,7 @@ public class ServConsLDAP extends HttpServlet {
             //
             Properties connexio = new Properties();
             connexio.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.ldap.LdapCtxFactory");
-            connexio.put(Context.PROVIDER_URL,"ldap://www.fjeclot.net:389");
+            connexio.put(Context.PROVIDER_URL,"ldap://172.20.24.182:389");
             try {
                 DirContext context = new InitialDirContext(connexio);
                 Attributes attrs = context.getAttributes("uid="+usuari+",ou="+unitatorg+",dc=fjeclot,dc=net");
@@ -60,12 +60,12 @@ public class ServConsLDAP extends HttpServlet {
                 out.println("<b>Title:</b> " + attrs.get("title").get() + "<br>" );
                 out.println("<b>Descripció:</b> " + attrs.get("description").get() + "<br>" );
                 out.println("<b>telephone number:</b> " + attrs.get("telephoneNumber").get() + "<br><br>" ); 
-                out.println("<b><a href=/AccLDAPWeb2/index.jsp>Retorn a la pàgina d'entrada de dades</a></b>");
+                out.println("<b><a href=/AccLDAPWeb/index.jsp>Retorn a la pàgina d'entrada de dades</a></b>");
             } 
             catch (NamingException e) {
                 out.print("<h2>ERROR D'ACCÉS A LES DADES DE L'USUARI:</h2>");
                 out.println("Nom d'usuari i/o unitat organitzativa incorrectes<br><br>");
-                out.println("<b><a href=/AccLDAPWeb2/index.jsp>Retorn a la pàgina d'entrada de dades</a></b>");
+                out.println("<b><a href=/AccLDAPWeb/index.jsp>Retorn a la pàgina d'entrada de dades</a></b>");
             }             
             out.println("</body>");
             out.println("</html>");
